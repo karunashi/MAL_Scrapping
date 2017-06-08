@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/karunashi/MAL_Scrapping#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.10.5",
+    "request": "^2.81.0"
   }
 }
