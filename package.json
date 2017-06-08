@@ -1,0 +1,25 @@
+{
+  "name": "mal_scrapping",
+  "version": "1.33.7",
+  "description": "Scrapping from one of my go-to websites for all things related to anime, my favorite hobby/recreational activity. Who doesn't like Anime!?",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karunashi/MAL_Scrapping.git"
+  },
+  "keywords": [
+    "webscraping"
+  ],
+  "author": "karunashi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karunashi/MAL_Scrapping/issues"
+  },
+  "homepage": "https://github.com/karunashi/MAL_Scrapping#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
