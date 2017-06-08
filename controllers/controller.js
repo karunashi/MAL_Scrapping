@@ -122,4 +122,5 @@ router.post("/articles/:id", function(req, res) {
 
 //// Placeholder for deleting notes later
 
+// Export this to server.js
 module.exports = router;
