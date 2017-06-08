@@ -7,6 +7,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var exphbs = require("express-handlebars")
 // Requiring our Note and Article models
 var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
@@ -26,15 +27,16 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+
+
 // Make public a static dir
-app.use(express.static(process.cwd() + "public"));
+app.use(express.static(process.cwd() + "/public"));
 
-// Import controllers and give server access to them.
-var router = require("./controllers/controllers.js");
-
-app.use("/", router);
+app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
+
 mongoose.connect("mongodb://localhost/malscrap");
 var db = mongoose.connection;
 
@@ -47,6 +49,10 @@ db.on("error", function(error) {
 db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
+
+// Import controllers and give server access to them.
+var router = require("./controllers/controller.js");
+app.use('/', router);
 
 // Listen on port 9001
 app.listen(9001, function() {

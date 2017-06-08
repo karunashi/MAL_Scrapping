@@ -12,6 +12,13 @@ var cheerio = require("cheerio");
 var Note = require("../models/Note.js");
 var Article = require("../models/Article.js");
 
+router.get("/", function(req, res){
+	res.render('index');
+});
+// router.get('/', function (req, res) {
+// 	res.redirect('/articles')
+// })
+
 router.get("articles", function (req, res){
 	Article.find().sort({_id: -1})
 	.populate("note")
@@ -21,6 +28,7 @@ router.get("articles", function (req, res){
 			}
 		else {
 		res.json(doc)
+		console.log(doc)
 			}
 		});
 });
@@ -37,9 +45,8 @@ router.get("/scrape", function(req, res) {
       // Save an empty result object
       var result = {};
 
-      // Add title, link, paragraph text, and img source
+      // Add title, link, paragraph text, and img source and save them as properties of the result object
 
-      , and save them as properties of the result object
       result.title = $(this).children("div .news-unit-right").children("p").text();
       result.link = $(this).children("a").attr("href");
       result.paratext = $(this).children("div .news-unit-right").children("div .text").text();
@@ -65,8 +72,8 @@ router.get("/scrape", function(req, res) {
       }
     });
   });
-  // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  // Go to the homepage where it should have the articles.
+  res.redirect("/");
 });
 
 // Grab an article by it's ObjectId
@@ -118,7 +125,6 @@ router.post("/articles/:id", function(req, res) {
     }
   });
 });
-
 
 //// Placeholder for deleting notes later
 
